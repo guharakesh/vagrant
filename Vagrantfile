@@ -10,12 +10,16 @@ Vagrant.configure(2) do |config|
 	config.ssh.forward_agent = true
 
 	config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: ".ssh/id_rsa.pub"
+	config.vm.provision "file", source: "~/.gitconfig", destination: ".gitconfig"
+	config.vm.provision "file", source: "~/_vimrc", destination: ".vimrc"
 
 	config.vm.provision "shell", path: "shell/setup.sh"
 	config.vm.provision "shell", 
 		:inline =>	"echo 'Turning off console beeps...' && "\
 								"grep '^set bell-style none' /etc/inputrc || "\
 								"echo 'set bell-style none' >> /etc/inputrc"	
+
+	config.vm.provision "shell", path: "shell/endings.sh"
 
 	config.vm.provider :virtualbox do |vb|
 		vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
