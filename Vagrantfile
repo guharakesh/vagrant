@@ -10,4 +10,10 @@ Vagrant.configure(2) do |config|
 	config.ssh.forward_agent = true
 
 	config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: ".ssh/id_rsa.pub"
+
+	config.vm.provision "shell", path: "shell/setup.sh"
+
+	config.vm.provider :virtualbox do |vb|
+		vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+	end
 end
