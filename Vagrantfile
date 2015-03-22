@@ -23,6 +23,11 @@ Vagrant.configure(2) do |config|
 
 	config.vm.provider :virtualbox do |vb|
 		vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+
+		vb.customize [
+			"setextradata", :id,
+			"VBoxInternal2/SharedFolderEnableSymlinksCreate/v-root", "1"
+		]
 	end
 
 end
