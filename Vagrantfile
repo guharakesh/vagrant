@@ -31,7 +31,7 @@ Vagrant.configure(2) do |config|
 	end
 
 	# Keep Running settings
-	config.vm.provision "shell", path: "shell/krcle.sh"
-	config.vm.network "forwarded_port", guest: 2368, host: 2368
+	# config.vm.provision "shell", path: "shell/krcle.sh"
+	# config.vm.network "forwarded_port", guest: 2368, host: 2368
 
 end
