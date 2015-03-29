@@ -10,6 +10,8 @@ Vagrant.configure(2) do |config|
 	config.ssh.forward_agent = true
 	config.vm.network "forwarded_port", guest: 80, host: 8080 
 	config.vm.network "forwarded_port", guest: 1337, host: 1337 
+	config.vm.network "forwarded_port", guest: 8100, host: 8100 
+	config.vm.network "forwarded_port", guest: 35729, host: 35729 
 
 	config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: ".ssh/id_rsa.pub"
 	config.vm.provision "file", source: "~/.gitconfig", destination: ".gitconfig"

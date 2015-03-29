@@ -10,3 +10,6 @@ apt-get install -y nodejs
 npm install -g http-server
 
 gem install sass
+
+npm install -g cordova
+npm install -g ionic
