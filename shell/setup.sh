@@ -13,3 +13,12 @@ gem install sass
 
 npm install -g cordova
 npm install -g ionic
+
+npm install -g gulp-install
+npm install -g gulp-util
+npm install -g bower
+npm install -g gulp-concat
+npm install -g gulp-sass
+npm install -g gulp-minify-css
+npm install -g gulp-rename
+npm install -g shelljs
