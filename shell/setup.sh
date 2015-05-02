@@ -8,6 +8,7 @@ curl -sL https://deb.nodesource.com/setup | sudo bash -
 apt-get install -y nodejs
 
 npm install -g http-server
+npm install -g node-inspector 
 
 gem install sass
 

@@ -4,7 +4,8 @@
 Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/trusty64"
 
-	# config.vm.synced_folder "src/", "/home/vagrant/src/", create: true
+	# config.vm.synced_folder "yolo/", "/home/vagrant/yolo/", create: true
+	config.vm.synced_folder "src/", "/home/vagrant/src/", disable: true
 
 	config.ssh.private_key_path = ["~/.vagrant.d/insecure_private_key", "~/.ssh/id_rsa"]
 	config.ssh.forward_agent = true
@@ -12,6 +13,7 @@ Vagrant.configure(2) do |config|
 	config.vm.network "forwarded_port", guest: 1337, host: 1337 
 	config.vm.network "forwarded_port", guest: 8100, host: 8100 
 	config.vm.network "forwarded_port", guest: 35729, host: 35729 
+	config.vm.network "forwarded_port", guest: 2368, host: 2368 
 
 	config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: ".ssh/id_rsa.pub"
 	config.vm.provision "file", source: "~/.gitconfig", destination: ".gitconfig"
@@ -29,7 +31,7 @@ Vagrant.configure(2) do |config|
 		vb.customize [
 			"modifyvm", :id,
 			"--natdnshostresolver1", "on",
-			"--memory", "1536"]
+			"--memory", "1024"]
 					
 
 		vb.customize [
@@ -37,6 +39,8 @@ Vagrant.configure(2) do |config|
 			"VBoxInternal2/SharedFolderEnableSymlinksCreate/v-root", "1"
 		]
 	end
+
+	config.vm.network "private_network", ip: '192.168.60.4'
 
 	# Keep Running settings
 	# config.vm.provision "shell", path: "shell/krcle.sh"
